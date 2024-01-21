@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- <title>Car Rental System</title> -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="assets/car_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css" />
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <!-- <script type="text/javascript" src="validate_user.js"></script> -->
+    <title>CARental</title>
+    <script>
+        // 3awzeen ne validate hena en kol value mosh fady 
+        // 3awzeen ne check en balance kan rakam
+        // we en fname we lname kano chars -done
+        // we en phone_no 11 rakam : length = 11 we each is an int
+        function check_signup() {
+            const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            const regName = /^[A-Za-z\s]+$/;
+
+            const ids = ["fname", "lname", "SSN", "phone_no", "balance", "email", "pwd", "pwd2"];
+            for (let i = 0; i < ids.length; i++) {
+
+            }
+            fn = document.getElementById("fname").value;
+            ln = document.getElementById("lname").value;
+            ssn = document.getElementById("SSN").value;
+            phone_no = document.getElementById("phone_no").value;
+            balance = document.getElementById("balance").value;
+            e = document.getElementById("email").value;
+            p = document.getElementById("pwd").value;
+            p2 = document.getElementById("pwd2").value;
+            alert(p.length);
+            if (fn == "") {
+                alert("please ENTER your First Name");
+                return false;
+            }
+            if (ln == "") {
+                alert("please ENTER your Last Name");
+                return false;
+            }
+            if (ssn == "") {
+                alert("please ENTER your Social Security Number");
+                return false;
+            }
+            if (phone_no == "") {
+                alert("please ENTER your phone number");
+                return false;
+            }
+            if (balance == "") {
+                alert("please ENTER your balance");
+                return false;
+            }
+            if (e == "") {
+                alert("empty email");
+                return false;
+            }
+            if (p == "") {
+                alert("empty password");
+                return false;
+            }
+            if (!(pattern.test(e))) {
+                alert("please enter a valid email");
+                return false;
+            }
+            if (p.localeCompare(p2) != 0) {
+                alert("please enter matching passwords");
+                return false;
+            }
+            if (isNaN(phone_no)) {
+                alert("Please enter a valid phone no.");
+                return false;
+            }
+            if (isNaN(balance)) {
+                alert("Please enter a valid balance");
+                return false;
+            }
+            if (!(regName.test(fn))) {
+                alert('Invalid first name given');
+                return false;
+            }
+            if (!(regName.test(ln))) {
+                alert('Invalid name given');
+                return false;
+            }
+            if ((phone_no.length != 11 || phone_no.charAt(0) != "0" || phone_no.charAt(1) != "1")) {
+                alert('Please enter a valid phone number');
+                return false;
+
+            }
+            if (p.length < 8) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="h-fit bg-no-repeat bg-cover bg-fixed" style="background-image: url('assets/car_background3.jpg')">
+        <section class="h-fit flex text-white ">
+            <div class="w-full flex justify-center justify-items-center text-center md:px-16 lg:px-0 z-0">
+                <div class="h-fit w-1/2 grid grid-rows-2 bg-[#000000] bg-opacity-80">
+                    <div class="w-3/4 h-screen flex-row justify-self-center py-1 px-0 z-20">
+                        <div class="w-full flex justify-center mx-0 py-0">
+                            <img src="assets/car_logo.png" width="200" height="200" alt="" />
+                        </div>
+                        <div class="w-full mx-0">
+                            <h1 class="text-4xl pb-4 font-bold text-center tracking-wide">SIGN UP</h1>
+                            <form action="signup.php" name="signup_form" method="POST" onsubmit="verify_signup(event)"
+                                class="sm:w-2/3 lg:w-10/12 mx-auto lg:px-0 mx-auto">
+                                <div class="pb-3 pt-4">
+                                    <input type="text" name="fname" id="fname" placeholder="First Name"
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]" />
+                                </div>
+                                <div class="pb-3">
+                                    <input type="text" name="lname" id="lname" placeholder="Last Name"
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]" />
+                                </div>
+                                <div class="pb-3">
+                                    <input type="text" name="SSN" id="SSN" placeholder="Social Security Number (SSN)"
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]" />
+                                </div>
+                                <div class="pb-3">
+                                    <input type="text" name="phone_no" id="phone_no" placeholder="Phone Number"
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]" />
+                                </div>
+                                <div class="pb-3">
+                                    <input type="text" name="balance" id="balance" placeholder="Balance"
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]" />
+                                </div>
+                                <div class="pb-3">
+                                    <input type="text" name="email" id="email" placeholder="Email"
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]" />
+                                </div>
+                                <div class="pb-3">
+                                    <input
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]"
+                                        type="password" name="pwd" id="pwd" placeholder="Password" />
+                                </div>
+                                <div class="pb-3">
+                                    <input
+                                        class="block w-full p-4 text-lg rounded-md bg-black border-2 border-[#3A3A42]"
+                                        type="password" name="pwd2" id="pwd2" placeholder="Confirm Password" />
+                                </div>
+                                <div class="text-right text-gray-400 hover:underline hover:text-gray-100">
+                                    <a href="index.html">Already have an account ? Login</a>
+                                </div>
+                                <div class="flex px-4 pb-2 pt-6 justify-center">
+                                    <button
+                                        class="uppercase block w-2/3 p-4 text-lg rounded-full bg-[#3A3A42] hover:bg-[#AD2323] hover:bg-opacity-90 focus:outline-none"
+                                        type="submit">
+                                        Sign Up
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+        </section>
+    </div>
+</body>
+
+<!-- <body>
+        <form action="signup.php" method="POST" onsubmit="return check_signup()">
+            <h1>WELCOME</h1>
+            <br />
+            <input id="fname" type="text" name="fname" placeholder="First name">
+            <br />
+            <input id="lname" type="text" name="lname" placeholder="Last name">
+            <br />
+            <input id="SSN" type="text" name="SSN" placeholder="Social Security Number">
+            <br />
+            <input id="phone_no" type="text" name="phone_no" placeholder="Phone Number">
+            <br />
+            <input id="balance" type="text" name="balance" placeholder="Balance">
+            <br />
+            <input id="email" type="text" name="email" placeholder="Email">
+            <br />
+            <input id="pwd" type="password" name="pwd" placeholder="Password">
+            <br />
+            <input id="pwd2" type="password" placeholder="Re-Enter Password">
+            <br />
+            <input type="submit"><a href="index.html">BACK TO LOGIN</a>
+        </form>
+        <br />
+    </body> -->
+
+</html>
+<script>
+
+    function validate_user_registration() {
+        var fname = document.forms["signup_form"]["fname"].value;
+        var lname = document.forms["signup_form"]["lname"].value;
+        var ssn = document.forms["signup_form"]["SSN"].value;
+        var phone_no = document.forms["signup_form"]["phone_no"].value;
+        var balance = document.forms["signup_form"]["balance"].value;
+        var email = document.forms["signup_form"]["email"].value;
+        var password = document.forms["signup_form"]["pwd"].value;
+        var confirm_password = document.forms["signup_form"]["pwd2"].value;
+
+        const regName = /^[A-Za-z\s]+$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&\s]+$/;
+
+        if (fname == "" && lname == "" && ssn == "" && phone_no == "" && balance == "" && email == "" && password == "" && confirm_password == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Please fill in the missing fields!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (fname == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">First Name field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (lname == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Last Name field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (ssn == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">SSN field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (phone_no == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Phone Number field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (balance == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Balance field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (email == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Email field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (password == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Password field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (confirm_password == "") {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Confirm Password field is required!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        } else if (confirm_password != password) {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Password mismatch!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        }
+        if (!regName.test(fname)) {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Invalid First Name!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        }
+        if (!regName.test(lname)) {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Invalid Last Name!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        }
+        if ((phone_no.length != 11 || phone_no.charAt(0) != "0" || phone_no.charAt(1) != "1")) {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Please enter a valid phone number!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        }
+        if (!emailRegex.test(email)) {
+            Swal.fire({
+                icon: 'error',
+                html: '<span style="color: #ffffff;">Invalid Email format!</span>',
+                confirmButtonColor: '#AD2323',
+                background: '#3A3A42',
+                customClass: {
+                    popup: 'swal2-dark',
+                    title: 'swal2-dark',
+                    content: 'swal2-dark',
+                },
+            });
+            return false;
+        }
+        return true;
+    }
+
+    function verify_signup(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const fname = document.forms["signup_form"]["fname"].value;
+        const lname = document.forms["signup_form"]["lname"].value;
+        const ssn = document.forms["signup_form"]["SSN"].value;
+        const phone_no = document.forms["signup_form"]["phone_no"].value;
+        const balance = document.forms["signup_form"]["balance"].value;
+        const email = document.forms["signup_form"]["email"].value;
+        const password = document.forms["signup_form"]["pwd"].value;
+        const confirm_password = document.forms["signup_form"]["pwd2"].value;
+
+        var check = validate_user_registration()
+        if (check === false) {
+            return;
+        }
+
+        Swal.fire({
+            title: '<span style="color: #FFFFFF;">Updating Status</span>',
+            html: '<span style="color: #ffffff;">Please wait...</span>',
+            confirmButtonColor: '#AD2323',
+            background: '#3A3A42',
+            customClass: {
+                popup: 'swal2-dark',
+                title: 'swal2-dark',
+                content: 'swal2-dark',
+            },
+            showCancelButton: false,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            didOpen: async () => {
+                try {
+                    const formData = new FormData();
+
+                    formData.append("fname", fname);
+                    formData.append("lname", lname);
+                    formData.append("SSN", ssn);
+                    formData.append("email", email);
+                    formData.append("phone_no", phone_no);
+                    formData.append("balance", balance);
+                    formData.append("pwd", password);
+
+                    const response = await fetch("signup.php", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Request failed with status ${response.status}`);
+                    }
+
+                    const result = await response.text();
+
+                    if (result.trim().toLowerCase() === "record added successfully") {
+
+                        Swal.fire({
+                            title: '<span style="color: #FFFFFF;">Signed Up</span>',
+                            icon: "success",
+                            html: '<span style="color: #ffffff;">Welcome to CARental!</span>',
+                            confirmButtonColor: '#AD2323',
+                            background: '#3A3A42',
+                            customClass: {
+                                popup: 'swal2-dark',
+                                title: 'swal2-dark',
+                                content: 'swal2-dark',
+                            },
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: '<span style="color: #FFFFFF;">Registration Failed</span>',
+                            text: result,
+                            icon: "error",
+                            confirmButtonColor: '#AD2323',
+                            background: '#3A3A42',
+                            customClass: {
+                                popup: 'swal2-dark',
+                                title: 'swal2-dark',
+                                content: 'swal2-dark',
+                            },
+                        });
+                    }
+                } catch (error) {
+                    Swal.fire({
+                        title: '<span style="color: #FFFFFF;">Request Failed</span>',
+                        text: error.toString(),
+                        icon: "error",
+                        confirmButtonColor: '#AD2323',
+                        background: '#3A3A42',
+                        customClass: {
+                            popup: 'swal2-dark',
+                            title: 'swal2-dark',
+                            content: 'swal2-dark',
+                        },
+                    });
+                }
+            }
+        });
+    }
+</script>
