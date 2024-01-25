@@ -51,6 +51,7 @@ This project aims to implement a comprehensive Car Rental System for a company, 
 
 3. **Run the System:**
    - Launch the system and ensure all components are functioning.
+   - Run localhost/index.html first
 
 4. **Testing:**
    - Utilize the populated data for testing purposes.
