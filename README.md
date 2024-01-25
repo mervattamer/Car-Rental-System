@@ -58,7 +58,7 @@ This project aims to implement a comprehensive Car Rental System for a company, 
 
 ## Contributors
 
-- [mervattamer]
+- [mervat tamer]
 - [mazen gaber]
 - [omar essam]
 - [clara samy]
